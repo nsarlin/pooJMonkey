@@ -1,0 +1,32 @@
+Compilation :
+javac -d build/ -sourcepath src src/tec/*.java
+javac -d build/ -sourcepath src src/recette/Simple.java
+
+Exécution :
+java -ea -cp build tec.LancerTests
+java -cp build:recette Simple
+
+Création du jar :
+Créer un Manifest dans build/ :
+Manifest-Version: 1.0 
+Created-By: 1.4.1_01 (Sun Microsystems Inc.) 
+Main-Class: Simple
+Class-Path: ./montec.jar
+
+jar cvfm montec.jar Manifest .
+dans le dossier build/
+
+Exécution du jar : java -jar montec.jar
+Exec test avec jar :
+java -ea -cp build -jar build/montec.jar tec.LancerTests
+
+architecture :
+build
+recette/Simple.java
+src : tec/ Autobus
+	   PassagerStandard
+	   EtatPassager
+	   JaugeNaturel
+	   Test*.java
+	   FauxPassager
+	   FauxAutobus
