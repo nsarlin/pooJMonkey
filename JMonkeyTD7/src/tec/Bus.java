@@ -14,6 +14,4 @@ public interface Bus
 
     void demanderChangerEnDebout(Passager p);
     void demanderChangerEnAssis(Passager p);
-
-    void allerArretSuivant() throws TecInvalidException;
 }
