@@ -42,6 +42,7 @@ public class CollecteFile implements Collecte{
 	p.println("-");
 	p.println(arret);
 	p.println("\n");
+	p.flush;
 	entres = 0;
 	sortis = 0;
 	arret++;
