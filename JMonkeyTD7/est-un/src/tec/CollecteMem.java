@@ -1,18 +1,19 @@
 package tec;
 
 import java.util.LinkedList;
+import java.util.Iterator;
 
 public class CollecteMem implements Collecte{
     int entres;
     int sortis;
-    LinkedList<int> liste_entrees;
-    LinkedList<int> liste_sorties;
+    LinkedList<Integer> liste_entrees;
+    LinkedList<Integer> liste_sorties;
 
     public CollecteMem(){
         entres = 0;
         sortis = 0;
-        liste_entrees = new LinkedList<int>;
-        liste_sorties = new LinkedList<int>;
+        liste_entrees = new LinkedList<Integer>();
+        liste_sorties = new LinkedList<Integer>();
     }
 
     public void uneEntree(){
@@ -24,23 +25,23 @@ public class CollecteMem implements Collecte{
     }
 
     public void changerArret(){
-        liste_entrees.add(entres);
-        liste_sorties.add(sortis);
+        liste_entrees.add(new Integer(entres));
+        liste_sorties.add(new Integer(sortis));
         entres = 0;
         sortis = 0;
     }
 
     public void terminerCollecte(){
         int nb_arret = liste_entrees.size();
-        Iterator<int> it_entrees = liste_entrees.iterator();
-        Iterator<int> it_sorties = liste_sorties.iterator();
+        Iterator<Integer> it_entrees = liste_entrees.iterator();
+        Iterator<Integer> it_sorties = liste_sorties.iterator();
         
         System.out.println("Collecte terminée. Voici l'historique des entrées/sorties\n");
         
         for(int arret = 1 ; arret <= nb_arret ; arret++) {
             System.out.println("Arrêt " + arret + " :");
-            System.out.println((int)it_entrees.next() + " entrées");
-            System.out.println((int)it_sorties.next() + " sorties\n");
+            System.out.println((Integer)it_entrees.next() + " entrées");
+            System.out.println((Integer)it_sorties.next() + " sorties\n");
         }
     }
 }
