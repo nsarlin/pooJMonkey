@@ -1,15 +1,14 @@
 package tec;
 
 import java.io.IOException;
-import tec.Collecte;
 
-public class Greffon extends Autobus
+public class Greffon implements Transport, Bus
 {
     Collecte collecte;
+    Autobus autobus;
     
     public Greffon(int nbAssisMax, int nbDeboutMax) throws TecInvalidException
     {
-	super(nbAssisMax, nbDeboutMax);
 	try
 	    {
 	    collecte = new CollecteFile();
@@ -18,35 +17,65 @@ public class Greffon extends Autobus
 	    {
 		System.err.println(e.getMessage());
 	    }
+
+	autobus = new Autobus(nbAssisMax, nbDeboutMax);
     }
-   
+    
     @Override
-    public void demanderPlaceAssise(Passager p)
+	public boolean aPlaceAssise()
     {
-	super.demanderPlaceAssise(p);
+	return autobus.aPlaceAssise();
+    }
+    
+    @Override
+	public boolean aPlaceDebout()
+    {
+	return autobus.aPlaceDebout();
+    }
+    
+    @Override
+	public void demanderPlaceAssise(Passager p)
+    {
+	autobus.demanderPlaceAssise(p);
 	collecte.uneEntree();
     }
     
     @Override
 	public void demanderPlaceDebout(Passager p)
     {
-	super.demanderPlaceDebout(p);
+	autobus.demanderPlaceDebout(p);
 	collecte.uneEntree();
     }
     
     @Override
 	public void demanderSortie(Passager p)
     {
-	super.demanderSortie(p);
+	autobus.demanderSortie(p);
 	collecte.uneSortie();
     }
     
+    @Override
+	public void demanderChangerEnDebout(Passager p)
+    {
+	autobus.demanderChangerEnDebout(p);
+    }
+    
+    @Override
+	public void demanderChangerEnAssis(Passager p)
+    {
+	autobus.demanderChangerEnAssis(p);
+    }
     
     @Override
 	public void allerArretSuivant() throws TecInvalidException
     {
-	super.allerArretSuivant();
+	autobus.allerArretSuivant();
 	collecte.changerArret();
     }
     
+    @Override
+	public String toString()
+    {
+	return autobus.toString();
+    }
 }
