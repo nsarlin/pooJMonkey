@@ -13,6 +13,8 @@ public class TecInvalidException extends Exception {
 	super(ise.getMessage());
     }
 */
+    private static final long serialVersionUID = 42L; 
+ 
     TecInvalidException (String message) {
 	super(message);
     }

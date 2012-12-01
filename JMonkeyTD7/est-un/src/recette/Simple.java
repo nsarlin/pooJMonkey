@@ -1,5 +1,3 @@
-// package recette;
-
 import tec.Bus;
 import tec.Transport;
 import tec.Usager;

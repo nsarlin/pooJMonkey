@@ -9,6 +9,8 @@ package tec;
  */
 public class IllegalStateException extends Exception {
 
+    private static final long serialVersionUID = 1337L; 
+
     IllegalStateException(String message) {
 	super(message);
     }

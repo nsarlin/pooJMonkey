@@ -105,11 +105,9 @@ class Autobus implements Bus, Transport
 	    try {
 		arret++;
 
-		Iterator<Passager> it = passagers.iterator();
-		while(it.hasNext())
+		for(int i=0; i < passagers.size(); i++)
 		{
-		    Passager p = it.next();
-		    p.nouvelArret(this, arret);
+		    passagers.get(i).nouvelArret(this, arret);
 		}
 	    }
 	    catch (IllegalStateException e) {
