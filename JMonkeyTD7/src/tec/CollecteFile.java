@@ -15,43 +15,40 @@ public class CollecteFile implements Collecte{
 
     public CollecteFile(String filename) throws IOException{
         f = new FileWriter(filename);
-	p = new PrintWriter(f);
-	entres = 0;
-	sortis = 0;
-	arret = 0;
+        p = new PrintWriter(f);
+        entres = 0;
+        sortis = 0;
+        arret = 0;
     }
 
     public CollecteFile() throws IOException{
         f = new FileWriter("log.txt");
-	p = new PrintWriter(f);
-	entres = 0;
-	sortis = 0;
-	arret = 0;
+        p = new PrintWriter(f);
+        entres = 0;
+        sortis = 0;
+        arret = 0;
     }
 
     public void uneEntree(){
-	entres ++;
+        entres ++;
     }
 
     public void uneSortie(){
-	sortis ++;
+        sortis ++;
     }
 
     public void changerArret(){
-	p.println(entres);
-	p.println("-");
-	p.println(sortis);
-	p.println("-");
-	p.println(arret);
-	p.println("\n");
-	p.flush();
-	entres = 0;
-	sortis = 0;
-	arret++;
+        arret++;
+        p.println("Arrêt " + arret + " :");
+        p.println(entres + " entrées");
+        p.println(sortis + " sorties\n");
+        p.flush();
+        entres = 0;
+        sortis = 0;  
     }
     
     public void terminerCollecte() throws IOException{
-	f.close();
+        f.close();
     }
-	
+
 }
