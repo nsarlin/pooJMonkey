@@ -39,8 +39,8 @@ public class CollecteFile implements Collecte{
 
     public void changerArret(){
         arret++;
-        p.println("Arrêt " + arret + " :");
-        p.println(entres + " entrées");
+        p.println("Arret " + arret + " :");
+        p.println(entres + " entrees");
         p.println(sortis + " sorties\n");
         p.flush();
         entres = 0;
