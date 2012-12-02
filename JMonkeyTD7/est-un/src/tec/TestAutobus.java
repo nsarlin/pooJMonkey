@@ -122,12 +122,12 @@ public class TestAutobus
 
         autobus.demanderSortie(fakePassagerAssis);
 
-        assert(autobus.aPlaceAssise() == false);
+        assert(autobus.aPlaceAssise() == true);
         assert(autobus.aPlaceDebout() == false);
 
         autobus.demanderSortie(fakePassagerDebout);
 
-        assert(autobus.aPlaceAssise() == false);
+        assert(autobus.aPlaceAssise() == true);
         assert(autobus.aPlaceDebout() == true);
 
         nbTests++;

@@ -81,6 +81,12 @@ class Autobus implements Bus, Transport
 		p.accepterSortie();
 		passagers.remove(p);
 	    }
+	    else if(p.estAssis())
+	    {
+		jaugeAssis.decrementer();
+		p.accepterSortie();
+		passagers.remove(p);
+	    }
 	}
 
     @Override
