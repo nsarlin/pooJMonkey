@@ -48,5 +48,10 @@ public class Greffon extends Autobus
 	super.allerArretSuivant();
 	collecte.changerArret();
     }
-    
+
+    public void terminerCollecte() throws IOException
+    {
+	collecte.terminerCollecte();
+    }
+
 }

@@ -5,7 +5,10 @@ import tec.Usager;
 import tec.FabriqueTec;
 import tec.PassagerStandard;
 
+import tec.Greffon;
+
 import tec.TecInvalidException;
+import java.io.IOException;
 
 class Simple
 {
@@ -24,10 +27,11 @@ class Simple
         System.out.println(t);
     }
 
-    static public void main(String[] args) throws TecInvalidException
+    static public void main(String[] args) throws TecInvalidException, IOException
     {
         //Transport serenity = new Autobus(1, 2);
-        Transport serenity = FabriqueTec.faireAutobus(1, 2);
+        //Transport serenity = FabriqueTec.faireAutobus(1, 2);
+	Transport serenity = new Greffon(1, 2);
 
         Usager kaylee = new PassagerStandard("Kaylee", 5);
 
@@ -69,6 +73,8 @@ class Simple
         System.out.println(kaylee);
         System.out.println(jayne);
         System.out.println(inara);
+   
+	((Greffon)serenity).terminerCollecte();
     }
 }
 

@@ -78,4 +78,9 @@ public class Greffon implements Transport, Bus
     {
 	return autobus.toString();
     }
+
+    public void terminerCollecte() throws IOException
+    {
+	collecte.terminerCollecte();
+    }
 }
