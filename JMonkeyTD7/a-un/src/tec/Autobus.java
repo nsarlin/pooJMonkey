@@ -105,9 +105,14 @@ class Autobus implements Bus, Transport
 	    try {
 		arret++;
 
-		for(int i=0; i < passagers.size(); i++)
+		/* le for est plus rapide qu'un Iterator dans le cas d'une liste implementant RandomAccess comme ArrayList
+		 * voir : http://docs.oracle.com/javase/1.4.2/docs/api/java/util/RandomAccess.html
+		 * on evite aussi la ConcurrentModificationException avec la methode qui suit
+		 */
+		ArrayList<Passager> passagersCopie = new ArrayList<Passager>(passagers);
+		for(int i=0, n=passagersCopie.size(); i < n; i++)
 		{
-		    passagers.get(i).nouvelArret(this, arret);
+		    passagersCopie.get(i).nouvelArret(this, arret);
 		}
 	    }
 	    catch (IllegalStateException e) {
