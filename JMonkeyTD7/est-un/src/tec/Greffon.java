@@ -7,17 +7,10 @@ public class Greffon extends Autobus
 {
     Collecte collecte;
     
-    public Greffon(int nbAssisMax, int nbDeboutMax) throws TecInvalidException
+    public Greffon(int nbAssisMax, int nbDeboutMax, Collecte collecte) throws TecInvalidException
     {
-	super(nbAssisMax, nbDeboutMax);
-	try
-	    {
-	    collecte = new CollecteFile();
-	    }
-	catch(IOException e)
-	    {
-		System.err.println(e.getMessage());
-	    }
+		super(nbAssisMax, nbDeboutMax);
+	    this.collecte = collecte;
     }
    
     @Override

@@ -1,0 +1,20 @@
+Arret 1 :
+0 entrees
+0 sorties
+
+Arret 2 :
+2 entrees
+0 sorties
+
+Arret 3 :
+1 entrees
+0 sorties
+
+Arret 4 :
+0 entrees
+1 sorties
+
+Arret 5 :
+0 entrees
+2 sorties
+

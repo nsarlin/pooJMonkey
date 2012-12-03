@@ -8,79 +8,79 @@ import java.util.Iterator;
 public class Greffon implements Transport, Bus
 {
     Collecte collecte;
-    Autobus autobus;
+    Bus bus;
     int arret;
     /*Le greffon doit tenir à jour la liste des passagers car ce sont eux qui
       demanderont la sortie*/
     ArrayList <Passager> passagers;    
 
-    public Greffon(int nbAssisMax, int nbDeboutMax) throws TecInvalidException
+    public Greffon(Bus bus, Collecte collecte) throws TecInvalidException
     {
-	/*Ce try/catch est à utiliser dans le cas d'un CollecteFile
-	 
-	  try {*/
-	    collecte = new CollecteMem();
-	    /*}
-	catch(IOException e)
-	    {
-		System.err.println(e.getMessage());
-		}*/
-
-	autobus = new Autobus(nbAssisMax, nbDeboutMax);
-	passagers = new ArrayList<Passager>();
-	arret = 0;
+		this.collecte = collecte;
+		this.bus = bus;
+		passagers = new ArrayList<Passager>();
+		arret = 0;
     }
     
     @Override
 	public boolean aPlaceAssise()
     {
-	return autobus.aPlaceAssise();
+		return bus.aPlaceAssise();
     }
     
     @Override
 	public boolean aPlaceDebout()
     {
-	return autobus.aPlaceDebout();
+		return bus.aPlaceDebout();
     }
     
     @Override
 	public void demanderPlaceAssise(Passager p)
     {
-	autobus.demanderPlaceAssise(p);
-	collecte.uneEntree();
-	passagers.add(p);
+		bus.demanderPlaceAssise(p);
+		collecte.uneEntree();
+		passagers.add(p);
     }
     
     @Override
 	public void demanderPlaceDebout(Passager p)
     {
-	autobus.demanderPlaceDebout(p);
-	collecte.uneEntree();
-	passagers.add(p);
+		bus.demanderPlaceDebout(p);
+		collecte.uneEntree();
+		passagers.add(p);
     }
     
     @Override
 	public void demanderSortie(Passager p)
     {
-	collecte.uneSortie();
-	passagers.remove(p);
+		bus.demanderSortie(p);
+		collecte.uneSortie();
+		passagers.remove(p);
     }
     
     @Override
 	public void demanderChangerEnDebout(Passager p)
     {
-	autobus.demanderChangerEnDebout(p);
+		bus.demanderChangerEnDebout(p);
     }
     
     @Override
 	public void demanderChangerEnAssis(Passager p)
     {
-	autobus.demanderChangerEnAssis(p);
+		bus.demanderChangerEnAssis(p);
     }
     
     @Override
 	public void allerArretSuivant() throws TecInvalidException
     {
+		Transport transport = null;
+
+	try {
+		transport = (Transport) bus;
+	} catch (ClassCastException e) {
+		throw new TecInvalidException(e);
+	}
+
 	try {
 	    arret++;
 	    
@@ -96,18 +96,18 @@ public class Greffon implements Transport, Bus
 	    catch (IllegalStateException e) {
 		throw new TecInvalidException(e);
 	    }
-	collecte.changerArret();
-	autobus.allerArretSuivant();
+		collecte.changerArret();
+		transport.allerArretSuivant();
     }
     
     @Override
 	public String toString()
     {
-	return autobus.toString();
+		return bus.toString();
     }
 
     public void terminerCollecte() throws IOException
     {
-	collecte.terminerCollecte();
+		collecte.terminerCollecte();
     }
 }

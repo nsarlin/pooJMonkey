@@ -1,13 +1,5 @@
-import tec.Bus;
-import tec.Transport;
-import tec.Usager;
+import tec.*;
 
-import tec.FabriqueTec;
-import tec.PassagerStandard;
-
-import tec.Greffon;
-
-import tec.TecInvalidException;
 import java.io.IOException;
 
 class Simple
@@ -31,7 +23,14 @@ class Simple
     {
         //Transport serenity = new Autobus(1, 2);
         //Transport serenity = FabriqueTec.faireAutobus(1, 2);
-	Transport serenity = new Greffon(1, 2);
+		Transport serenity = null;
+		try {
+			serenity = new Greffon(1, 2, new CollecteFile("log.txt"));
+		}
+		catch(IOException e)
+		{
+			System.err.println(e.getMessage());
+		}
 
         Usager kaylee = new PassagerStandard("Kaylee", 5);
 
